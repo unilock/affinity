@@ -49,9 +49,6 @@
     ],
     "cardinal-components": [
       "io.wispforest.affinity.component.AffinityComponents"
-    ],
-    "terrablender": [
-      "io.wispforest.affinity.worldgen.AffinityWorldgen\u0024TerraBlenderHook"
     ]
   },
   "mixins": [
@@ -63,7 +60,7 @@
     "minecraft": "1.21.1",
     "trinkets": "*",
     "owo": ">=0.12.12+1.21",
-    "terrablender": "*",
+    "biolith": "*",
     "cardinal-components-entity": "*",
     "cardinal-components-chunk": "*",
     "cardinal-components-world": "*",

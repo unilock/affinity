@@ -1,5 +1,6 @@
 package io.wispforest.affinity.worldgen;
 
+import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import io.wispforest.affinity.Affinity;
 import io.wispforest.affinity.mixin.access.OverworldBiomeCreatorInvoker;
 import io.wispforest.affinity.object.AffinityBlocks;
@@ -20,10 +21,7 @@ import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.ClampedIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
@@ -31,8 +29,6 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
-import terrablender.api.Regions;
-import terrablender.api.TerraBlenderApi;
 
 import java.util.List;
 
@@ -59,6 +55,7 @@ public class AffinityWorldgen {
 
     public static void initialize() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PECULIAR_CLUMP);
+		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, AffinityWorldgen.WISP_FOREST_KEY, 0.25);
     }
 
     public static void bootstrapAzaleaTree(Registerable<PlacedFeature> featureRegisterable) {
@@ -244,12 +241,5 @@ public class AffinityWorldgen {
                 .spawnSettings(spawnSettings.build())
                 .generationSettings(generation.build())
                 .build();
-    }
-
-    public static class TerraBlenderHook implements TerraBlenderApi {
-        @Override
-        public void onTerraBlenderInitialized() {
-            Regions.register(new AffinityBiomeRegion());
-        }
     }
 }

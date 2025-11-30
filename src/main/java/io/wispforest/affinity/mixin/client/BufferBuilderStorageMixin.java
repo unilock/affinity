@@ -1,8 +1,6 @@
 package io.wispforest.affinity.mixin.client;
 
-import com.google.common.collect.ImmutableList;
 import io.wispforest.affinity.client.render.AbsoluteEnchantmentGlintHandler;
-import io.wispforest.affinity.client.render.SkyCaptureBuffer;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferBuilderStorage;
@@ -25,9 +23,5 @@ public class BufferBuilderStorageMixin {
                 builderStorage::remove,
                 renderLayer -> assignBufferBuilder(builderStorage, renderLayer)
         );
-    }
-
-    static {
-        RenderLayerAccessor.setBlockLayers(ImmutableList.<RenderLayer>builder().addAll(RenderLayer.getBlockLayers()).add(SkyCaptureBuffer.SKY_STENCIL_LAYER).build());
     }
 }

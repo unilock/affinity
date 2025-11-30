@@ -72,8 +72,8 @@ public class PotionContentsComponentMixin implements ExtendedPotionContentsCompo
         return args;
     }
 
-    @Inject(method = "buildTooltip(Ljava/lang/Iterable;Ljava/util/function/Consumer;FF)V", at = @At("TAIL"), locals = LocalCapture.CAPTURE_FAILHARD)
-    private static void addFuniFlightText(Iterable<StatusEffectInstance> effects, Consumer<Text> tooltip, float durationMultiplier, float tickRate, CallbackInfo ci, List<Pair<EntityAttribute, EntityAttributeModifier>> attributeModifiers) {
+    @Inject(method = "buildTooltip(Ljava/lang/Iterable;Ljava/util/function/Consumer;FF)V", at = @At("TAIL"))
+    private static void addFuniFlightText(Iterable<StatusEffectInstance> effects, Consumer<Text> tooltip, float durationMultiplier, float tickRate, CallbackInfo ci, @Local List<Pair<EntityAttribute, EntityAttributeModifier>> attributeModifiers) {
         if (StreamSupport.stream(effects.spliterator(), false).noneMatch(statusEffectInstance -> statusEffectInstance.getEffectType().value() == AffinityStatusEffects.FLIGHT)) {
             return;
         }
