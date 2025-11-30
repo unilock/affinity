@@ -110,6 +110,8 @@ public class PostEffectBuffer {
         ((AffinityFramebufferExtension) this.framebuffer).affinity$setBlitProgram(AffinityClient.BLIT_POST_EFFECT_BUFFER::program);
 
         WindowResizeCallback.EVENT.register((client, window) -> {
+			if (this.framebuffer == null) return;
+
             this.framebuffer.resize(window.getFramebufferWidth(), window.getFramebufferHeight(), MinecraftClient.IS_SYSTEM_MAC);
             if (this.textureFilter != -1) {
                 this.framebuffer.setTexFilter(this.textureFilter);

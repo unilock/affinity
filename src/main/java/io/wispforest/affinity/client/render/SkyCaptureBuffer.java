@@ -162,6 +162,8 @@ public class SkyCaptureBuffer extends RenderLayer {
 
     static {
         WindowResizeCallback.EVENT.register((client, window) -> {
+			if (skyCapture == null || skyStencil == null) return;
+
             skyCapture.resize(window.getFramebufferWidth(), window.getFramebufferHeight(), MinecraftClient.IS_SYSTEM_MAC);
             GlStateManager._bindTexture(skyCapture.getColorAttachment());
             GlStateManager._texImage2D(
