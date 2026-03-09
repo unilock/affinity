@@ -9,7 +9,6 @@ import dev.emi.emi.api.widget.WidgetHolder;
 import io.wispforest.affinity.blockentity.impl.BrewingCauldronBlockEntity;
 import io.wispforest.affinity.compat.emi.AffinityEmiPlugin;
 import io.wispforest.affinity.compat.emi.EmiUIAdapter;
-import io.wispforest.affinity.compat.emi.StatusEffectEmiStack;
 import io.wispforest.affinity.compat.emi.StatusEffectSlotWidget;
 import io.wispforest.affinity.misc.potion.PotionMixture;
 import io.wispforest.affinity.misc.potion.PotionUtil;
@@ -18,6 +17,7 @@ import io.wispforest.affinity.recipe.PotionMixingRecipe;
 import io.wispforest.owo.ui.component.Components;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.core.*;
+import moe.prwk.emiffect.util.MobEffectEmiStack;
 import net.minecraft.block.Blocks;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.item.Items;
@@ -40,7 +40,7 @@ public class PotionMixingEmiRecipe extends BasicEmiRecipe {
 
         this.inputs = Stream.concat(
                 this.recipe.itemInputs.stream().map(AffinityEmiPlugin::veryCoolFeatureYouGotThereEmi),
-                this.recipe.effectInputs.stream().map(StatusEffectEmiStack::new)
+                this.recipe.effectInputs.stream().map(MobEffectEmiStack::new)
         ).toList();
         this.outputs = List.of(EmiStack.of(PotionUtil.setPotion(Items.POTION.getDefaultStack(), recipe.potionOutput())));
     }

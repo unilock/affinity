@@ -24,18 +24,12 @@ import io.wispforest.affinity.recipe.ShapedAssemblyRecipe;
 import io.wispforest.affinity.recipe.ShapelessAssemblyRecipe;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Util;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class AffinityEmiPlugin implements EmiPlugin {
 
@@ -63,9 +57,9 @@ public class AffinityEmiPlugin implements EmiPlugin {
 
         // ---
 
-        for (var effect : Registries.STATUS_EFFECT) {
-            registry.addEmiStack(new StatusEffectEmiStack(effect));
-        }
+//        for (var effect : Registries.STATUS_EFFECT) {
+//            registry.addEmiStack(new StatusEffectEmiStack(effect));
+//        }
 
         registry.addCategory(POTION_MIXING);
         registry.addWorkstation(POTION_MIXING, EmiStack.of(Blocks.SPORE_BLOSSOM));
@@ -77,18 +71,18 @@ public class AffinityEmiPlugin implements EmiPlugin {
 
         // ---
 
-        registry.addCategory(CONTAINING_POTIONS);
-
-        var effectToPotion = new HashMap<StatusEffect, List<Potion>>();
-        for (var potion : Registries.POTION) {
-            for (var effectInst : potion.getEffects()) {
-                effectToPotion.computeIfAbsent(effectInst.getEffectType().value(), unused -> new ArrayList<>()).add(potion);
-            }
-        }
-
-        effectToPotion.forEach((effect, potions) -> {
-            potions.forEach(potion -> registry.addRecipe(new ContainingPotionsEmiRecipe(effect, potion)));
-        });
+//        registry.addCategory(CONTAINING_POTIONS);
+//
+//        var effectToPotion = new HashMap<StatusEffect, List<Potion>>();
+//        for (var potion : Registries.POTION) {
+//            for (var effectInst : potion.getEffects()) {
+//                effectToPotion.computeIfAbsent(effectInst.getEffectType().value(), unused -> new ArrayList<>()).add(potion);
+//            }
+//        }
+//
+//        effectToPotion.forEach((effect, potions) -> {
+//            potions.forEach(potion -> registry.addRecipe(new ContainingPotionsEmiRecipe(effect, potion)));
+//        });
 
         // ---
 

@@ -105,6 +105,8 @@ dependencies {
 
 //    modLocalRuntime "io.vram:canvas-fabric:${project.canvas_version}"
 //    modLocalRuntime "io.wispforest:gadget:${project.gadget_version}"
+
+    modImplementation "maven.modrinth:emiffect:2.1.6+mc1.21.1"
 }
 
 base {
