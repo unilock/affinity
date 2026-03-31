@@ -55,7 +55,7 @@ public class AffinityWorldgen {
 
     public static void initialize() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PECULIAR_CLUMP);
-		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, AffinityWorldgen.WISP_FOREST_KEY, 0.25);
+		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, AffinityWorldgen.WISP_FOREST_KEY, 0.167);
     }
 
     public static void bootstrapAzaleaTree(Registerable<PlacedFeature> featureRegisterable) {
